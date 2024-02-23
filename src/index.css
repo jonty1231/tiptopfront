@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.googlefont{
+    font-family: 'Playfair Display', serif;
+}
+
+
+.bgimage{
+    background-image: url(/pexels-mehmet-turgut-kirkgoz-4677567.jpg);
+    width: 100vw;
+    height: 100%;
+    
+    background-size: cover;
+}
+.blure{
+    background-color:rgba(48, 33, 33, 0.295);
+    backdrop-filter: blur(9px);
+}
+
+.line {
+    
+    border-left: 2px solid rgb(243, 250, 243);
+    height: 10rem;
+  }
+
+  .boxxshadow{
+    
+    background: #c1c1c1;
+
+    box-shadow: 10px 10px 30px #000000cc,inset -10px -10px 10px #ffffffcc;
+  }  
