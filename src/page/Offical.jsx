@@ -5,6 +5,7 @@ import Addproduct from '../components/Addproduct'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Showproduct from '../components/Showproduct';
+import { PORT } from '../App';
 axios.defaults.withCredentials=true;
 
 
@@ -18,7 +19,7 @@ const Offical = () => {
 const sendrequest =async()=>{
 
 
-  const res= await axios.get('http://localhost:8080/getuser',{
+  const res= await axios.get(`${PORT}/getuser`,{
     withCredentials:true,
   })
   if(res.data.success){ setdata(true)}
@@ -30,7 +31,7 @@ sendrequest()
 
 
  const handellogout =async()=>{
-  const res=await axios.get('http://localhost:8080/logout');
+  const res=await axios.get(`${PORT}/logout`);
       if(res.data.success){navigation("/owner")}
  }
 

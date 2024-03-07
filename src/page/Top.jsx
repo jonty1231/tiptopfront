@@ -1,6 +1,8 @@
 import { BsOctagonFill } from "react-icons/bs";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {toast } from 'react-toastify';
+import { PORT } from "../App";
 
 
 export default function Top(){
@@ -8,14 +10,14 @@ export default function Top(){
     const [top,settop]=useState([])
 
     const homeproduct=async ()=>{
-        const res= await axios.get('http://localhost:8080/top',{
+        const res= await axios.get(`${PORT}/top`,{
             withCredentials:true
         })
        
         settop(res.data.top)
     
     }
-    
+     
     useEffect(()=>{
     homeproduct();
     },[])
@@ -28,6 +30,22 @@ export default function Top(){
 }
 
 const List=({j})=>{
+
+    const [user,setuser]=useState(false)
+    const varifyuser=async()=>{
+        const res=await axios.get(`${PORT}/user/logedin`,{
+           withCredentials:true
+        })
+         setuser(res.data.success)}
+         useEffect(()=>{
+            varifyuser()
+          },[])  
+          
+    
+    const addtocart=async(id)=>{
+        const res=await axios.get(`${PORT}/user/addcart/${id}`) 
+       toast.success(res.data.message)
+    }
 
    
     return(
@@ -51,7 +69,7 @@ const List=({j})=>{
         
 
             </div>
-         
+            <button className="bg-red-800 absolute bottom-0 px-3 " onClick={()=>user?addtocart(j._id):notuser}>Add To Cart</button>
             </div>
             
      

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast } from 'react-toastify';
+import { PORT } from "../App";
 
 
 
@@ -10,7 +11,7 @@ export default function Search(){
     const [product,setproduct]=useState([])
 
 const homeproduct=async ()=>{
-    const res= await axios.get('http://localhost:8080/product',{
+    const res= await axios.get(`${PORT}/product`,{
         withCredentials:true
     })
    
@@ -26,7 +27,7 @@ homeproduct();
 
     return(
         <div className='  grid grid-cols-8 gap-6 sm:grid-cols-2 justify-around m-4'>
-         {product.map((i)=><List j={i} key={i._id}/> )}
+         {product && product.map((i)=><List j={i} key={i._id}/> )}
         </div>
     )
 
@@ -36,7 +37,7 @@ const List=({j})=>{
     const navigator= useNavigate()
 const [user,setuser]=useState(false)
     const varifyuser=async()=>{
-        const res=await axios.get("http://localhost:8080/user/logedin",{
+        const res=await axios.get(`${PORT}/user/logedin`,{
            withCredentials:true
         })
          setuser(res.data.success)}
@@ -45,7 +46,7 @@ const [user,setuser]=useState(false)
       },[])  
       
       const addtocart=async(id)=>{
-        const res=await axios.get(`http://localhost:8080/user/addcart/${id}`) 
+        const res=await axios.get(`${PORT}/user/addcart/${id}`) 
        toast.success(res.data.message)
     }
     

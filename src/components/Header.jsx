@@ -6,18 +6,20 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IoMdLogIn } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
+import { PORT } from "../App";
+
 
 export const Header=()=>{
    const[user,setuser]=useState(false)
    const varifyuser=async()=>{
-      const res=await axios.get("http://localhost:8080/user/logedin",{
+      const res=await axios.get(`${PORT}/user/logedin`,{
          withCredentials:true
       })
        setuser(res.data.success)}
        
        const logouthandel=async()=>{
 try {
-    await axios.get("http://localhost:8080/user/logoutuser")
+    await axios.get(`${PORT}/user/logoutuser`)
     location.reload()
 } catch (error) {
    
@@ -30,7 +32,7 @@ try {
  const fss=" text-4xl fa-sharp fa-solid fa-flip  "
 
 
-  return( <div className="blure w-[100vw]">
+  return( <div className="blure w-screen">
  <div className="w-[100vw] text-center h-[10vh]  justify-around    pt-3 flex">  
 <span className={`${fss} fa-t text-red-700 googlefont`}></span>
 <span className={`${fss} fa-i text-blue-700 googlefont`}></span>

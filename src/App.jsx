@@ -5,7 +5,7 @@ import Lower from './page/Lower'
 import Shoes from './page/Shoes'
 import Search from './page/Search'
 import Ownerlogin from './page/Ownerlogin'
- 
+  
 
 import './App.css'
 import Offical from './page/Offical'
@@ -16,6 +16,8 @@ import Userregister from './page/Userregister'
 import UserCart from './page/UserCart'
 import Map from './page/Map'
 
+
+export const PORT ='https://tiptopback-2.onrender.com/' ;
 
 const route=createBrowserRouter([
   {

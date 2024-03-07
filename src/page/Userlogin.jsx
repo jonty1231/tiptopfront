@@ -2,6 +2,8 @@ import React, { useState }  from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {toast } from 'react-toastify';
+import { PORT } from '../App';
+
 
 const Userlogin = () => {
   const navigation =useNavigate()
@@ -12,7 +14,7 @@ const submithandel=async(e)=>{
   e.preventDefault()
   try {
     if(email && password){ 
-    const res= await axios.post("http://localhost:8080/user/login",{email,password})
+    const res= await axios.post(`${PORT}/user/login`,{email,password})
       
        if(res.data.success){
    toast.success('Login Success')

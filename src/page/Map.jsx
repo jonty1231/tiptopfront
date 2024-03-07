@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, Marker,Popup,LayersControl} from 'react-leaflet'
-import L from "leaflet"
-import img from "../../public/pngg1.png"
 
 
 const Map = () => {
- const ic= L.icon({
-    iconUrl:img,
-    iconSize: new L.Point(40, 45),
-})
+
     const [location,setlocation]=useState({latitude:0,longitude:0})
 
     useEffect(()=>{
@@ -31,7 +26,7 @@ navigator.geolocation.getCurrentPosition((position)=>{setlocation({latitude:posi
        <div className='text-xl'> <div  className='text-red-800'> TIP TOP</div> Shop 👕</div>
       </Popup>
     </Marker >
-     {location.latitude && <Marker position={[location.latitude,location.longitude]} icon={ic}>
+     {location.latitude && <Marker position={[location.latitude,location.longitude]} >
       <Popup>
        <div className='text-xl'>Owner</div>
       </Popup>

@@ -4,12 +4,13 @@ import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { MdEditSquare } from "react-icons/md";
 import {toast } from 'react-toastify';
+import { PORT } from '../App';
 
 const Showproduct = () => {
   
  const [productdata,setproductdata]=useState([]);
 const showproduct=async()=>{
-    const res=await axios.get("http://localhost:8080/getproduct",{
+    const res=await axios.get(`${PORT}/getproduct`,{
         withCredentials:true
     })
    
@@ -35,7 +36,7 @@ const List=({j})=>{
   const deleteproduct=async(id)=>{
     location.reload()
  try {
-  const res=  await axios.delete(`http://localhost:8080/getuser/${id}`)
+  const res=  await axios.delete(`${PORT}/getuser/${id}`)
     toast.success(res.data.message)
     
  } catch (error) {

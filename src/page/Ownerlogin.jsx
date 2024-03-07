@@ -2,6 +2,8 @@ import React, {  useState } from 'react'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
 import {toast } from 'react-toastify';
+import { PORT } from '../App';
+
 
 const Ownerlogin = () => {
 const [showpassword,setshowpassword]=useState(true)
@@ -12,7 +14,7 @@ const navgate=useNavigate();
   const loginhandel=async(e)=>{
     e.preventDefault();
     try {
-      const user=await axios.post(' http://localhost:8080/owner',{email,password})
+      const user=await axios.post(`${PORT}/owner`,{email,password})
      
       if(user.data.success){
         toast.success('Login Success')

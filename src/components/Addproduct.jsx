@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import { PORT } from '../App'
 // import { toast } from 'react-toastify'
-
-
 
 const Addproduct = () => {
   const [name,setname]=useState('')
@@ -27,7 +26,7 @@ const Addproduct = () => {
   
     //  file.append("upload_preset",'image_preset')
 
-    const res= await axios.post(' http://localhost:8080/product',data)         
+    const res= await axios.post(`${PORT}/product`,data)         
       // withCredentials:true)
    location.reload()
     // 

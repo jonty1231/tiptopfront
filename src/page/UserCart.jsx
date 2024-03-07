@@ -3,6 +3,8 @@ import axios from 'axios'
 import { IoCartOutline } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import {toast } from 'react-toastify';
+import { PORT } from '../App';
+
 
 
 const UserCart = () => {
@@ -11,7 +13,7 @@ const [cart,setcart]=useState(null);
 
 const carthandel=async()=>{
   try {
-    const res=await axios.get("http://localhost:8080/user/getcart")
+    const res=await axios.get(`${PORT}/user/getcart`)
     res.data.cartproduct.length==0?"":setcart(res.data.cartproduct)
 
 setprice(res.data.cartproduct.map((i)=>{return i.price}))
@@ -48,7 +50,7 @@ useEffect(()=>{
 const List=({items,index})=>{
 const deletitem= async()=>{
   try {
-     const result= await axios.delete(`http://localhost:8080/user//deletcart/${items._id}`)
+     const result= await axios.delete(`${PORT}/user//deletcart/${items._id}`)
      if(result.data.success){
       toast.success(result.data.message)
       location.reload()
