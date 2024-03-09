@@ -34,7 +34,7 @@ showproduct()
 const List=({j})=>{
 
   const deleteproduct=async(id)=>{
-    location.reload()
+
  try {
   const res=  await axios.delete(`${PORT}/getuser/${id}`)
     toast.success(res.data.message)

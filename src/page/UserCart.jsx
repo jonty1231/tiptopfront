@@ -53,7 +53,7 @@ const deletitem= async()=>{
      const result= await axios.delete(`${PORT}/user//deletcart/${items._id}`)
      if(result.data.success){
       toast.success(result.data.message)
-      location.reload()
+     
      }
   } catch (error) {
     
