@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { PORT } from '../App'
+import { useNavigate } from 'react-router-dom'
 // import { toast } from 'react-toastify'
 
 const Addproduct = () => {
@@ -11,7 +12,7 @@ const Addproduct = () => {
   const [other,setother]=useState("")
   const [photo,setphoto]=useState('')
 
- 
+ const navigation=useNavigate()
   const addhandel=async(e)=>{
     e.preventDefault();
   
@@ -28,7 +29,7 @@ const Addproduct = () => {
 
     const res= await axios.post(`${PORT}/product`,data)         
       // withCredentials:true)
-   location.reload()
+navigation("/owner/offical")
     // 
   
   }

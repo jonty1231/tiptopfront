@@ -4,6 +4,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import {toast } from 'react-toastify';
 import { PORT } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -48,12 +49,13 @@ useEffect(()=>{
 }
 
 const List=({items,index})=>{
+  const navigation=useNavigate()
 const deletitem= async()=>{
   try {
      const result= await axios.delete(`${PORT}/user//deletcart/${items._id}`)
      if(result.data.success){
       toast.success(result.data.message)
-     
+     navigation("/user/cart")
      }
   } catch (error) {
     

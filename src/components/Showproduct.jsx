@@ -5,6 +5,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { MdEditSquare } from "react-icons/md";
 import {toast } from 'react-toastify';
 import { PORT } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 const Showproduct = () => {
   
@@ -32,13 +33,13 @@ showproduct()
 
 
 const List=({j})=>{
-
+const navigator=useNavigate()
   const deleteproduct=async(id)=>{
 
  try {
   const res=  await axios.delete(`${PORT}/getuser/${id}`)
     toast.success(res.data.message)
-    
+    navigator("/owner/offical")
  } catch (error) {
   toast.error(error)
  }
