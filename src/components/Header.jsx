@@ -7,7 +7,7 @@ import axios from "axios";
 import { IoMdLogIn } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
 import { PORT } from "../App";
-
+axios.defaults.withCredentials=true
 
 export const Header=()=>{
    const[user,setuser]=useState(false)
@@ -46,7 +46,7 @@ try {
 <div  className=" w-[100vw]  text-3xl  flex py-2 sm:block sm:text-[1rem] lg:flex-row-reverse  ">
 <div className="mt-1  relative sm:w-[100vw] lg:mr-4 flex"> <input type="text" placeholder="search...." id="search"
  className="rounded-[20px] sm:w-[100%] p-1"  /> 
- {user && <button className='p-1 bg-black text-white rounded-[20px] flex sm:rounded-[5px] ' onClick={logouthandel}> Logout<IoMdHome className="m-1 sm:mt-[0.8rem] sm:m-[0px] " /></button>}
+ {user && <button className='p-1 bg-black text-white rounded-[20px] flex sm:rounded-[5px] ' onClick={()=>logouthandel}> Logout<IoMdHome className="m-1 sm:mt-[0.8rem] sm:m-[0px] " /></button>}
  <label htmlFor="search" className={`fa-solid fa-magnifying-glass absolute top-2 ${user?'right-[9rem] sm:right-[5.3rem] sm:top-3 ':'right-3 '}`}></label>
 
   </div>

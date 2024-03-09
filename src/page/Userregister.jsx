@@ -10,6 +10,8 @@ const Userregister = () => {
     const [otp,setotp]=useState("")
     const [sendotp,setsendotp]=useState(false)
     const [verifyotp,setverifyotp]=useState(false)
+  const [showpassword,setshowpassword]=useState(false);
+
 const [name,setname]=useState('')
 const [email,setemail]=useState('')
 const [password,setpassword]=useState('');
@@ -96,9 +98,10 @@ const registerhandel=async(e)=>{
             <input type="text" placeholder='Enter Full Name ...' id='name' className='border-2 border-black rounded-[10px] px-2 m-1'  value={name} onChange={(i)=>setname(i.target.value)}/>
         </div>
        
-        <div  className='m-2 text-2xl'>
+        <div  className='m-2 text-2xl relative'>
             <label htmlFor="password" className='block'>Password:</label>
-            <input type="text" placeholder='Enter Password..' id='password'  className='border-2 border-black rounded-[10px] px-2 m-1' value={password} onChange={(i)=>setpassword(i.target.value)}/>
+            <input type={`${showpassword?"text":"password"}`} placeholder='Enter Password..' id='password'  className='border-2 border-black rounded-[10px] px-2 m-1' value={password} onChange={(i)=>setpassword(i.target.value)}/>
+            <i className={`fa-solid ${showpassword?"fa-eye":"fa-eye-slash"} absolute right-1 bottom-3 text-[1.3rem] cursor-pointer`} onClick={()=>setshowpassword(!showpassword)}></i>
         </div>
         <div className='ml-7'><button className='w-[70%] m-4 text-white bg-blue-700 text-xl p-1 rounded-[10px]' type='submit'>Login</button></div>
         <div className='flex justify-between text-blue-700 sm:text-[1.2rem]'> <Link to='/login'>Allready Have a Account?</Link>
